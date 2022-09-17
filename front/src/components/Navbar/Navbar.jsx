@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./navbar.scss";
+import { Button } from "./Button";
 import { MenuItems } from "./MenuItems";
 
 export default function NavBar() {
@@ -19,6 +20,13 @@ export default function NavBar() {
                         );
                     })}
                 </ul>
+                <a className='SignUpButton' href="#">
+                    <Button>Sign Up</Button>
+                </a>
+                <a className='LoginButton' href="#">
+                    <Button>Log In</Button>
+                </a>
+                
             </div>
         </div>
     );
