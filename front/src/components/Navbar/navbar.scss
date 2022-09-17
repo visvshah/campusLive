@@ -1,28 +1,20 @@
 .navbar {
-    background: linear-gradient(90deg, #8915e8 0%, rgb(110, 94, 254) 70%);
+    background: linear-gradient(90deg, #8027c4 0%, rgb(129, 116, 240) 70%);
     height: 10vh;
     width: 100vw;
     display: flex;
     flex-direction: row;
-    // justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
-.navbar-logo {
-    color: #ecf0f1;
-    font-size: 300%;
-    justify-self: start;
-    margin-left: 30px;
-    float: left;
-    // cursor: pointer; 
-}
+
 
 .nav-menu {
     display: flex;
-
-    text-align: right;
-    width: 70vw;
-    justify-content: end;
+    justify-self: right;
+    width: max-content;
+    // justify-content: right;
     // justify-items: end;
     font-size: 1.2rem;
 }
@@ -40,4 +32,5 @@
     // align-items: left;
     margin-left: 50px;
     height: 50px;
+    // width: 30vw;
 }
