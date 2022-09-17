@@ -7,8 +7,8 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 
 export default function MapPage() {
     const [viewport, setViewport] = useState({
-        width: "100vw",
-        height: "100vh",
+        width: "100%",
+        height: "100%",
         latitude: -86.921195,
         longitude: 40.423705,
         zoom: 10
@@ -36,6 +36,7 @@ export default function MapPage() {
                 
                 onViewportChange = {nextViewport => setViewport(nextViewport)}
                 />
+           
             </div>
         </div>
     </div>
