@@ -1,5 +1,5 @@
 .navbar {
-    background: linear-gradient(90deg, #3498DB 0%, rgb(110, 94, 254) 70%);
+    background: linear-gradient(90deg, #8915e8 0%, rgb(110, 94, 254) 70%);
     height: 10vh;
     width: 100vw;
     display: flex;
@@ -33,7 +33,7 @@
     color: #ecf0f1;
     font-size: 300%;
     justify-self: start;
-    margin-left: 10px;
+    margin-left: 30px;
     // cursor: pointer; 
 }
 
@@ -52,4 +52,9 @@
     color: #fbcf62;
     text-decoration: none;
     text-shadow: 1.5px 1.5px 1.5px;
+}
+
+.nav-logo {
+    margin-left: 30px;
+    width: auto;
 }

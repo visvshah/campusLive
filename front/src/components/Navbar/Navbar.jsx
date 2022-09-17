@@ -7,8 +7,10 @@ export default function NavBar() {
     return (
         <div>
             <div className="navbar">
-                <h1 className="navbar-logo">CampusLive</h1>
-                <div className="menu-icon"></div>
+                <img className="nav-logo" src="./logo.png" alt="" ></img>
+                {/* <h1 className="navbar-logo">CampusLive</h1> */}
+                {/* <div className="menu-icon">
+                </div> */}
                 <ul className="nav-menu">
                     {MenuItems.map((item, index) => {
                         return (
