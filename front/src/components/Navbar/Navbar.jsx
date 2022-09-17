@@ -3,12 +3,13 @@ import "./navbar.scss";
 import { MenuItems } from "./MenuItems";
 
 export default function NavBar() {
+
     return (
         <div>
             <div className="navbar">
-                <h1 className="navbar-logo">React <i className="fab fa-react"></i></h1>
+                <h1 className="navbar-logo">CampusLive</h1>
                 <div className="menu-icon"></div>
-                <ul>
+                <ul className="nav-menu">
                     {MenuItems.map((item, index) => {
                         return (
                             <li key={index}>
