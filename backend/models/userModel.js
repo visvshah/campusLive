@@ -17,11 +17,12 @@ const userSchema = mongoose.Schema({
     },
     school: {
         type: String,
-        required: [true, 'Please add a school']
+        required: [false, 'Please add a school']
     },
     isOrganizer: {
         type: Boolean,
-        default: false
+        default: false,
+        require: [false, 'Are you an organizer?']
     }
     // purdue admin, club, student
 },
