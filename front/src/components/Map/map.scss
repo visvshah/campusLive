@@ -1,0 +1,26 @@
+.mapPage{
+    display: flex;
+    flex-direction: row;
+    .left{
+        width: 30%;
+        height: 90vh;
+        justify-content: center;
+        align-items: center;
+        background-color: #4D5656;
+        .form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            .input{
+                margin-bottom: 20px;
+                width: 50%;
+            }
+        }
+    }
+    .right{
+        width:70%;
+        justify-content: center;
+        align-items: center;
+    }
+}
