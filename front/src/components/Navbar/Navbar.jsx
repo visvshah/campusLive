@@ -3,7 +3,6 @@ import "./navbar.scss";
 import { MenuItems } from "./MenuItems";
 
 export default function NavBar() {
-
     return (
         <div>
             <div className="navbar">
