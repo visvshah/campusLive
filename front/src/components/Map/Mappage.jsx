@@ -23,6 +23,7 @@ export default function MapPage() {
             <div className="left">
                 <h1 className = "header">Create a Event!</h1>
                 <form autoComplete = "off" validate = "true" className = "form" onSubmit = {handleSubmit}>
+                    <input></input>
                     <TextField id="outlined-basic" label="Outlined" variant="outlined" />
                     <TextField id="filled-basic" label="Filled" variant="filled" />
                     <TextField id="standard-basic" label="Standard" variant="standard" />

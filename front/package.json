@@ -20,7 +20,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "webpack-dev-server --hot --inline"
   },
   "eslintConfig": {
     "extends": [
@@ -40,4 +41,5 @@
       "last 1 safari version"
     ]
   }
+  
 }
