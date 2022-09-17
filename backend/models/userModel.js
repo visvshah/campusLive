@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const { boolean } = require('webidl-conversions')
 
 const userSchema = mongoose.Schema({
     name: {
@@ -14,6 +15,14 @@ const userSchema = mongoose.Schema({
         type: String,
         required: [true, 'Please add a password']
     },
+    school: {
+        type: String,
+        required: [true, 'Please add a school']
+    },
+    isOrganizer: {
+        type: Boolean,
+        default: false
+    }
     // purdue admin, club, student
 },
 {
