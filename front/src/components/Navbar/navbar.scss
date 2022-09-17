@@ -1,0 +1,23 @@
+.navbar {
+    background: linear-gradient(90deg, rgb(20, 60, 86) 0%, rgb(110, 94, 254) 70%);
+    height: 10vh;
+    width: 100vw;
+    display: flex;
+    // flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    ul{
+        display: flex;
+        flex-direction: row;
+        li{
+            margin-left: 20px;
+        }
+    }
+}
+
+.navbar-logo {
+    color: #ffff;
+    justify-self: start;
+    margin-left: 20px;
+    cursor: pointer; 
+}
