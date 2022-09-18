@@ -2,7 +2,7 @@ import React from 'react';
 import './landing.css';
 import image from "./purdueCampus.png";
 
-export default function Landing() {
+function Landing() {
   return (
     <div>
       <div className="landingPage">
@@ -53,3 +53,5 @@ export default function Landing() {
     </div>
   )
 }
+
+export default Landing
