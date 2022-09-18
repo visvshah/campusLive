@@ -1,6 +1,6 @@
 import "./map.css"
 import React, { useRef, useEffect, useState } from 'react';
-import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+import mapboxgl from 'mapbox-gl';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiYWRyaWVucWkiLCJhIjoiY2w4NWVkOGRtMHAwNjNzbzBqa3JzcG5sdCJ9.g1U7-gzoDDuGNtrY-P18-w';
 
@@ -19,8 +19,9 @@ export default function Map() {
     })
     const handleSubmit = (event) =>{
         event.preventDefault();
-        fetch("http://localhost:8000/api/markers", { method: "POST", body: pinData, mode: 'no-cors',})
+        fetch("http://localhost:8000/api/markers/", { method: "POST", body: pinData, mode: 'no-cors', contentType: "applicationjson"})
             .then(res => {
+                console.log(res)
                 setPinData({
                     title: "",
                     description: "",
