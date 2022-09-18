@@ -37,7 +37,7 @@ input{
 }
 button{
     cursor: pointer;
-    margin-top: 20px;
+    margin: none;
     color: white;
     background-color: black;
     width: 300px;
