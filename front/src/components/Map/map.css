@@ -5,6 +5,7 @@
     justify-content: center;
     height: 90vh;
     width: 100vw;
+    overflow-y: hidden;
 }
 .left{
     display: flex;

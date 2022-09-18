@@ -20,6 +20,15 @@ export default function Map() {
     const handleSubmit = (event) =>{
         event.preventDefault();
     }
+    
+    const [coord, setCoord] = useState({
+        long: -86.921195,
+        lat: 40.423705
+    })
+    useEffect(() => {
+        pinData.long = coord.long;
+        pinData.lat = coord.lat;
+      }, [coord])
     useEffect(() => {
         if (map.current) return; // initialize map only once
             map.current = new mapboxgl.Map({
@@ -32,7 +41,6 @@ export default function Map() {
             });
         }
     );
-
     useEffect(() => {
         if (!map.current) return; // wait for map to initialize
             map.current.on('move', () => {
@@ -42,15 +50,21 @@ export default function Map() {
         });
     });
 
+    useEffect(() => {
+        map.current.on('click', (clicky) => {
+            setCoord({...coord, long:clicky.lngLat.lng, lat:clicky.lngLat.lat})
+        });
+    });
+
     return (
         <div className = "mapPage">
             <div className="left">
                 <h1>Create an Event!</h1>
                 <form autoComplete = "off" validate = "true" className = "form" onSubmit = {handleSubmit}> 
-                    <input placeholder = "Title" id = "title" name = "title" type ="title" onChange = {(e) => setPinData({...pinData, title: e.target.value})}/>
-                    <input placeholder = "Description" id = "description" name = "description" type ="description" onChange = {(e) => setPinData({...pinData, description: e.target.value})}/>
-                    <input placeholder = "Longitude" id = "longitude" name = "longitude" type ="longitude" onChange = {(e) => setPinData({...pinData, long: e.target.value})}/>
-                    <input placeholder = "Latitude" id = "latitude" name = "latitude" type ="latitude" onChange = {(e) => setPinData({...pinData, lat: e.target.value})}/>
+                    <input placeholder = "Title" id = "title" name = "title" type ="title" value = {pinData.title} onChange = {(e) => setPinData({...pinData, title: e.target.value})}/>
+                    <input placeholder = "Description" id = "description" name = "description" type ="description" value = {pinData.description} onChange = {(e) => setPinData({...pinData, description: e.target.value})}/>
+                    <input placeholder = "Longitude" id = "longitude" name = "longitude" type ="longitude" value = {pinData.long} onChange = {(e) => setPinData({...pinData, long: e.target.value})}/>
+                    <input placeholder = "Latitude" id = "latitude" name = "latitude" type ="latitude" value = {pinData.lat} onChange = {(e) => setPinData({...pinData, lat: e.target.value})}/>
                 <button type="submit" onClick = {handleSubmit}>Submit</button>
                 </form>
             </div>
