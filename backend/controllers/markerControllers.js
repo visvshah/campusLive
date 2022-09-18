@@ -1,5 +1,4 @@
 const asyncHandler = require('express-async-handler')
-
 const Marker = require('../models/markerModel')
 const User = require('../models/userModel')
 
@@ -11,10 +10,12 @@ const getMarkers = asyncHandler(async (req, res) => {
 
 
 const setMarkers = asyncHandler(async (req, res) => {
-    if(!req.body.text) {
+    console.log("1")
+    if(!req.body) {
         res.status(400)
         throw new Error('Please add a text field')
     }
+    console.log(res)
 
     const marker = await Marker.create({
         text: req.body.text,
