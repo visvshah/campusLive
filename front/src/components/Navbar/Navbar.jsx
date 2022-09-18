@@ -9,7 +9,7 @@ export default function NavBar() {
         <div>
             <div className="navbar">
                 <div className="navlogo">
-                    <img className="nav-logo" src={logo} />
+                    <img className="nav-logo" alt = "CampusLive" src={logo} />
                 </div>
                 <div className="nav-menu">
                     {MenuItems.map((item, index) => {
