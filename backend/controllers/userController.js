@@ -1,3 +1,4 @@
+
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const asyncHandler = require('express-async-handler')
@@ -9,7 +10,7 @@ const User = require('../models/userModel')
 const registerUser = asyncHandler(async (req, res) => {
     const { name, email, password, school, isOrganizer } = req.body
 
-    if(!name || !email || !password || !school ) {
+    if(!name.length > 0 || !email.length > 0 || !password.length > 0 || !school.length > 0) {
         res.status(400)
         throw new Error('Please add all fields')
     }

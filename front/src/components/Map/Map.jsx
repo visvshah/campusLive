@@ -19,7 +19,7 @@ export default function Map() {
     })
     const handleSubmit = (event) =>{
         event.preventDefault();
-        fetch("route", { method: "POST", body: pinData })
+        fetch("http://localhost:8000/api/markers", { method: "POST", body: pinData, mode: 'no-cors',})
             .then(res => {
                 setPinData({
                     title: "",
