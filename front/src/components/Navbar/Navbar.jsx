@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./navbar.scss";
 import { Button } from "./Button";
 import { MenuItems } from "./MenuItems";
