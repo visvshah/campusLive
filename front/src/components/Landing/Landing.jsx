@@ -18,7 +18,7 @@ export default function Landing() {
         <div class="contentImage">
           <h2> Want to know where and when a club meeting is?</h2>
           <h2> We gotchu fam. </h2>
-          <img src={image} className = "image" alt="Purdue Campus Map"></img>
+          <img src={image} className = "image" alt = "Purdue Campus Map"></img>
         </div>
         <div class="content">
           <h2> Streamlining information about events to collegiate students across the U.S. </h2>
