@@ -5,6 +5,7 @@ import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-load
 mapboxgl.accessToken = 'pk.eyJ1IjoiYWRyaWVucWkiLCJhIjoiY2w4NWVkOGRtMHAwNjNzbzBqa3JzcG5sdCJ9.g1U7-gzoDDuGNtrY-P18-w';
 
 export default function App() {
+
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [lng, setLng] = useState(-70.9);
