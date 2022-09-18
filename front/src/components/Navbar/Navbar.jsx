@@ -3,6 +3,7 @@ import "./navbar.scss";
 import { Button } from "./Button";
 import { MenuItems } from "./MenuItems";
 import logo from './logo.png';
+import {Link} from "react-router-dom";
 
 export default function NavBar() {
     return (
@@ -14,8 +15,8 @@ export default function NavBar() {
                 <div className="nav-menu">
                     {MenuItems.map((item, index) => {
                         return (
-                            <a className={item.cName} href={item.url}>
-                                <Button>{item.title}</Button>
+                            <a className={item.cName} href={item.to}>
+                                <Button component = {Link} to={item.to}>{item.title}</Button>
                             </a>
                         );
                     })}
