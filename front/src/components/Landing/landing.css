@@ -117,23 +117,20 @@ h2 {
     margin-right: 0px;
 }
 
-.global{
-}
-
-.global ul{
+.ul{
     list-style-type: none;
     line-height: 30px;
     font-size: 15px;
     margin-bottom: 0;
 }
 
-.global ul a{
+.ul a{
     color: #fff;
     text-decoration: none;
     transition: 0.3s;
 }
 
-.global ul a:hover{
+.ul a:hover{
     opacity: 0.8;
     color: #eee;
 }
