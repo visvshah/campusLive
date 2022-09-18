@@ -1,6 +1,6 @@
-import React from 'react'
-import './landing.css'
-import image from "./purdueCampus.png"
+import React from 'react';
+import './landing.css';
+import image from "./purdueCampus.png";
 
 export default function Landing() {
   return (
@@ -12,13 +12,13 @@ export default function Landing() {
         <div class="content">
           <h2> Telling American college students about events. </h2>
         </div>
-        <div class="content">
+        <div id='Home' class="content">
           <h2> Event organizing made easy. </h2>
         </div>
-        <div class="contentImage">
+        <div id='About' class="contentImage">
           <h2> Want to know where and when a club meeting is?</h2>
           <h2> We gotchu fam. </h2>
-          <img src={image} className = "image" alt="Purdue Campus Map"></img>
+          <img src={image} className = "image" alt = "Purdue Campus Map"></img>
         </div>
         <div class="content">
           <h2> Streamlining information about events to collegiate students across the U.S. </h2>
