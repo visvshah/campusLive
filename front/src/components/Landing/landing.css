@@ -88,11 +88,14 @@ h2 {
     margin-top:-15px;
 }
 
-footer{
-    font: arial;
+.footing{
     background-color:rgba(78,86,86);
-    padding: 5vmin;
-    text-align: right;
+    color: whitesmoke;
+    padding: 15vw;
+    padding-top: 2vh;
+    padding-bottom: 15vh;
+    transform:translate(0%, 0%);
+    margin-top: -20vh;
 }
 
 @keyframes slide {
@@ -103,3 +106,43 @@ footer{
         transform:translateX(25%);
     }
 }
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.row{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.global{
+}
+
+.global ul{
+    list-style-type: none;
+    line-height: 30px;
+    font-size: 15px;
+    margin-bottom: 0;
+}
+
+.global ul a{
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.global ul a:hover{
+    opacity: 0.8;
+    color: #eee;
+}
+
+.columns{
+    display: flex;
+    flex-direction: row;
+}
+
+#spacing > p:first-child { float: left; text-align: left; width: 33.3%; } 
+#spacing > p:nth-child(2) { float: left; text-align: center; width: 33.4%; } 
+#spacing > p:last-child { float: right; text-align: right; width: 33.3%; }

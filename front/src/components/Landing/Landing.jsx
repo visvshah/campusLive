@@ -26,10 +26,30 @@ export default function Landing() {
         <div class="content">
           <h2> "This website is very swag." - Jammy Wang </h2>
         </div>
-
-        
+        <div class="footing">
+          <div class="global">
+            <div id="spacing"> <p>Authors<br /><br /> <ul>
+                    <li><a href="#">Visv Shah</a> </li>
+                    <li><a href="#">Adrien Qi</a> </li>
+                    <li><a href="#">William Lin</a> </li>
+                    <li><a href="#">Jammy Wang</a> </li>
+                  </ul></p> 
+                  <p>Email<br /><br /> <ul>
+                    <li><a href="mailto:Shah802@purdue.edu">Shah802@purdue.edu</a> </li>
+                    <li><a href="mailto:Qi124@purdue.edu">Qi124@purdue.edu</a> </li>
+                    <li><a href="mailto:Lin1620@purdue.edu">Lin1620@purdue.edu</a> </li>
+                    <li><a href="mailto:Wang5466@purdue.edu">Wang5466@purdue.edu</a> </li>
+                  </ul></p> 
+                  <p>LinkedIn<br /><br /> <ul>
+                    <li><a href="https://www.linkedin.com/in/visvshah/">@visvshah</a> </li>
+                    <li><a href="https://https://www.linkedin.com/in/aqi/">@aqi</a> </li>
+                    <li><a href="https://www.linkedin.com/in/williamlin04">@williamlin04</a> </li>
+                    <li><a href="https://www.linkedin.com/in/jammywang/">@jammywang</a> </li>
+                  </ul></p> 
+            </div>
+          </div>
+        </div>
       </div>
-
     </div>
   )
 }
