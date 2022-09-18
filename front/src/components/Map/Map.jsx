@@ -19,9 +19,9 @@ export default function Map() {
     })
     const handleSubmit = (event) =>{
         event.preventDefault();
-        fetch("http://localhost:8000/api/markers/", { method: "POST", body: pinData, mode: 'no-cors', contentType: "applicationjson"})
+        fetch("http://localhost:4000/api/markers/", { method: "POST", body: JSON.stringify(pinData), mode: 'no-cors', headers: {'Content-Type': 'application/json','Accept': 'application/json'}, contentType: "applicationjson"})
             .then(res => {
-                console.log(res)
+                console.log(pinData)
                 setPinData({
                     title: "",
                     description: "",

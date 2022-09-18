@@ -4,17 +4,34 @@ export default function Auth() {
   const [logIn, changeLogIn] = useState(true);
   const handleSubmit = (event) =>{
     event.preventDefault();
+    if(logIn){
+      sendLogIn()
+    }
+    else{
+      sendSignUp()
+    }
   }
-  /*const sendLogIn =(e) =>{
-    fetch("route", { method: "POST", body: userData })
-    .then(res => {
-      console.log(res)
-      res.token;
+  const sendLogIn = (e) =>{
+    e.preventDefault();
+        fetch("http://localhost:4000/api/users/login", { method: "POST", body: userData, mode: 'cors', contentType: "applicationjson"})
+            .then(res => {
+                return res.json()
+            })
+            .then(data => {
+              localStorage.setItem("token", data.token)
+            })
+        .catch(e => console.log(e))
+  }
 
-    })
-    .catch(e => console.log(e))
+  const sendSignUp = (e) =>{
+    e.preventDefault();
+        fetch("http://localhost:4000/api/users/", { method: "POST", body: userData, mode: 'no-cors', contentType: "applicationjson"})
+            .then(res => {
+                
+            })
+        .catch(e => console.log(e))
   }
-  */
+
   const changeMode = () =>{
     changeLogIn(!logIn);
   }
@@ -42,6 +59,7 @@ export default function Auth() {
                 }
                 
                 <input placeholder = "Enter Password" id = "password" name = "password" type ="password" onChange = {(e) => setUserData({...userData, password: e.target.value})}/>
+                { !logIn && (
                 <label className="dropdown">
                   Are you an organizer for your school?
                     <select className = "select" value={userData.isOrganizer} onChange={(e) => setUserData({...userData, isOrganizer: e.target.value})}>
@@ -49,7 +67,7 @@ export default function Auth() {
                       <option value="no">No</option>
                     </select>
                   </label>
-                
+                )}
   
                 <button className = "submitButton" type="submit" onClick = {handleSubmit}>Submit</button>
             </form>
