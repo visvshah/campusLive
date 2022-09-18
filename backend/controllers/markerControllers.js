@@ -10,19 +10,25 @@ const getMarkers = asyncHandler(async (req, res) => {
 
 
 const setMarkers = asyncHandler(async (req, res) => {
-    console.log("1")
     if(!req.body) {
         res.status(400)
         throw new Error('Please add a text field')
     }
-    console.log(res)
-
+    // console.log(res)
+    console.log("hello")
     const marker = await Marker.create({
         text: req.body.text,
         long: req.body.long,
         lat: req.body.lat,
         description: req.body.description
     })
+    try {
+        await marker.save();
+        response.status(201).json(marker);
+    } catch (error) {
+        response.statis(409).json({message: error})
+    }
+    
     
     res.status(200).json(marker)
 })
@@ -30,7 +36,6 @@ const setMarkers = asyncHandler(async (req, res) => {
 
 const updateMarker = asyncHandler(async (req, res) => {
     const marker = await Marker.findById(req.params.id)
-
     if (!marker) {
         res.status(400)
         throw new Error('Marker not found')
