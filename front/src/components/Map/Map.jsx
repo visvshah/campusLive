@@ -19,8 +19,17 @@ export default function Map() {
     })
     const handleSubmit = (event) =>{
         event.preventDefault();
-    }
-    
+        fetch("route", { method: "POST", body: pinData })
+            .then(res => {
+                setPinData({
+                    title: "",
+                    description: "",
+                    long: 0.0,
+                    lat: 0.0,
+                })
+            })
+        .catch(e => console.log(e))
+        }
     const [coord, setCoord] = useState({
         long: -86.921195,
         lat: 40.423705
