@@ -15,12 +15,12 @@ export default function Auth() {
     e.preventDefault();
         fetch("http://localhost:4000/api/users/login", { method: "POST", body: userData, mode: 'cors', contentType: "applicationjson"})
             .then(res => {
-                return res.json()
+                return res.json();
             })
             .then(data => {
-              localStorage.setItem("token", data.token)
+              localStorage.setItem("token", data.token);
             })
-        .catch(e => console.log(e))
+        .catch(e => console.log(e));
   }
 
   const sendSignUp = (e) =>{

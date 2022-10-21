@@ -10,24 +10,24 @@ const getMarkers = asyncHandler(async (req, res) => {
 
 
 const setMarkers = asyncHandler(async (req, res) => {
-    console.print(req.body)
+    console.log("In setMarkers");
+    console.log(req.body);
     
-
     try {
+        console.log("In Try1");
         const marker = await Marker.create({
             event: req.body.title,
             long: req.body.long,
             lat: req.body.lat,
             description: req.body.description
-        })
-
-        console.log(marker);
+        })  
+        console.log("In Try2");
 
         await marker.save();
-        response.status(201).json(marker);
+        res.status(201).json(marker);
     } catch (error) {
         console.log(error);
-        response.statis(409).json({message: error})
+        res.status(409).json({message: error});
     }
 })
 

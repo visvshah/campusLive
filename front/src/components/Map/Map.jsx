@@ -18,10 +18,13 @@ export default function Map() {
         lat: 0.0,
     })
     const handleSubmit = (event) =>{
+        console.log('in HandleSubmit');
         event.preventDefault();
-        fetch("http://localhost:4000/api/markers/", { method: "POST", body: JSON.stringify(pinData), mode: 'no-cors', headers: {'Content-Type': 'application/json','Accept': 'application/json'}, contentType: "applicationjson"})
+        fetch("http://localhost:4000/api/markers/", { method: "POST", body: JSON.stringify(pinData), mode: 'cors', headers: {'Content-Type': 'application/json; charset=UTF-8'}})
             .then(res => {
-                console.log(pinData)
+                console.log("In then");
+                console.log(pinData);
+                console.log(JSON.stringify(pinData));
                 setPinData({
                     title: "",
                     description: "",
@@ -29,7 +32,10 @@ export default function Map() {
                     lat: 0.0,
                 })
             })
-        .catch(e => console.log(e))
+        .catch(e =>{
+                console.log("Error");
+                console.log(e);
+            })
         }
     const [coord, setCoord] = useState({
         long: -86.921195,
@@ -38,7 +44,7 @@ export default function Map() {
     useEffect(() => {
         pinData.long = coord.long;
         pinData.lat = coord.lat;
-      }, [coord])
+    }, [coord])
     useEffect(() => {
         if (map.current) return; // initialize map only once
             map.current = new mapboxgl.Map({
