@@ -1,11 +1,10 @@
 import "./map.css"
 import React, { useRef, useEffect, useState } from 'react';
-import mapboxgl from 'mapbox-gl';
+import mapboxgl, { Marker } from 'mapbox-gl';
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiYWRyaWVucWkiLCJhIjoiY2w4NWVkOGRtMHAwNjNzbzBqa3JzcG5sdCJ9.g1U7-gzoDDuGNtrY-P18-w';
 
 export default function Map() {
-
     const mapContainer = useRef(null);
     const map = useRef(null);
     const [lng, setLng] = useState(-86.921195);
@@ -81,7 +80,6 @@ export default function Map() {
             <div className="right">
                 <div ref={mapContainer} className="map-container" />
             </div>
-            
         </div>
     );
 }
