@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "react-map-gl": "^7.0.19",
     "react-scripts": "^5.0.1",
     "sass": "^1.54.9"
   }
