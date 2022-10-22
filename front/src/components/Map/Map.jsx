@@ -17,6 +17,7 @@ export default function Map() {
         long: 0.0,
         lat: 0.0,
     })
+      
     const handleSubmit = (event) =>{
         event.preventDefault();
         fetch("http://localhost:4000/api/markers/", { method: "POST", body: JSON.stringify(pinData), mode: 'no-cors', headers: {'Content-Type': 'application/json','Accept': 'application/json'}, contentType: "applicationjson"})
@@ -35,10 +36,12 @@ export default function Map() {
         long: -86.921195,
         lat: 40.423705
     })
+
     useEffect(() => {
         pinData.long = coord.long;
         pinData.lat = coord.lat;
       }, [coord])
+
     useEffect(() => {
         if (map.current) return; // initialize map only once
             map.current = new mapboxgl.Map({
@@ -51,6 +54,7 @@ export default function Map() {
             });
         }
     );
+
     useEffect(() => {
         if (!map.current) return; // wait for map to initialize
             map.current.on('move', () => {
@@ -66,6 +70,11 @@ export default function Map() {
         });
     });
 
+    const marker1 = new mapboxgl.Marker()
+        .setLngLat([-86.921195, 40.423705])
+        .addTo(map.current)
+
+
     return (
         <div className = "mapPage">
             <div className="left">
@@ -79,9 +88,9 @@ export default function Map() {
                 </form>
             </div>
             <div className="right">
-                <div ref={mapContainer} className="map-container" />
-            </div>
-            
+                <div ref={mapContainer} className="map-container">
+                </div>
+            </div>        
         </div>
     );
 }
