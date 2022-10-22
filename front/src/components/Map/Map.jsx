@@ -17,6 +17,7 @@ export default function Map() {
         long: 0.0,
         lat: 0.0,
     })
+    const marker1 = new mapboxgl.Marker()
       
     const handleSubmit = (event) =>{
         event.preventDefault();
@@ -63,16 +64,19 @@ export default function Map() {
             setZoom(map.current.getZoom().toFixed(12));
         });
     });
-
+    
     useEffect(() => {
         map.current.on('click', (clicky) => {
             setCoord({...coord, long:clicky.lngLat.lng, lat:clicky.lngLat.lat})
         });
     });
 
-    const marker1 = new mapboxgl.Marker()
-        .setLngLat([-86.921195, 40.423705])
-        .addTo(map.current)
+    useEffect(() => {
+        if (!map.current) return;
+            marker1.setLngLat([pinData.long, pinData.lat])
+            marker1.addTo(map.current)
+    }, [pinData])
+
 
 
     return (

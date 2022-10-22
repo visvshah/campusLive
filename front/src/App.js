@@ -3,7 +3,6 @@ import Map from './components/Map/Map';
 import Auth from './components/Auth/Auth';
 import NavBar from './components/Navbar/Navbar'
 import Landing from './components/Landing/Landing.jsx';
-//import {registerUser, loginUser, getMe} from '../../backend/controllers/userController.js'
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './index.css';
 
@@ -21,5 +20,3 @@ export default function App() {
     </Router>
   )
 }
-
-//<Auth regUser = {registerUser}/>
