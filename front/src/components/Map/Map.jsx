@@ -70,9 +70,9 @@ export default function Map() {
     2. type character in one of the text boxes
     3. click again on map, the initial click location is marked
     
-    * issues: the visauzliation of the marker on click is not updating 
+    * issues: the visualization of the marker on click is not updating 
     the marker is showing the last click on the map. 
-
+    
     permanent addition the map is occuring correctly, just not visually correct
     */
 
