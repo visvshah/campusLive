@@ -9,7 +9,7 @@ export default function Map() {
     const mapContainer = useRef(null);
     const map = useRef(null);
     const [lng, setLng] = useState(-86.921195);
-    const [lat, setLat] = useState(40.423705);
+    const [lat, setLat] = useState(-86.921195);
     const [zoom, setZoom] = useState(15);
     const [pinData, setPinData] = useState({
         title: "",
@@ -17,6 +17,7 @@ export default function Map() {
         long: 0.0,
         lat: 0.0,
     })
+
     const handleSubmit = (event) =>{
         event.preventDefault();
         fetch("http://localhost:4000/api/markers/", { method: "POST", body: JSON.stringify(pinData), mode: 'no-cors', headers: {'Content-Type': 'application/json','Accept': 'application/json'}, contentType: "applicationjson"})
@@ -51,6 +52,13 @@ export default function Map() {
             });
         }
     );
+
+    // useEffect(() => {
+    //     const marker1 = new mapboxgl.Marker()
+    //         .setLngLat([-86.921195, -86.921195])
+    //         .addTo(mapContainer.current);
+    // })
+
     useEffect(() => {
         if (!map.current) return; // wait for map to initialize
             map.current.on('move', () => {
@@ -59,6 +67,7 @@ export default function Map() {
             setZoom(map.current.getZoom().toFixed(12));
         });
     });
+
 
     useEffect(() => {
         map.current.on('click', (clicky) => {
