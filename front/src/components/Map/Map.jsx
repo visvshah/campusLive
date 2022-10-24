@@ -65,19 +65,29 @@ export default function Map() {
         });
     });
     
+    /* order: 
+    1. click on map (marker isn't updated)
+    2. type character in one of the text boxes
+    3. click again on map, the initial click location is marked
+    
+    * issues: the visauzliation of the marker on click is not updating 
+    the marker is showing the last click on the map. 
+
+    permanent addition the map is occuring correctly, just not visually correct
+    */
+
     useEffect(() => {
         map.current.on('click', (clicky) => {
             setCoord({...coord, long:clicky.lngLat.lng, lat:clicky.lngLat.lat})
+            marker1.setLngLat([pinData.long, pinData.lat])
+            marker1.addTo(map.current)
         });
     });
 
-    useEffect(() => {
-        if (!map.current) return;
-            marker1.setLngLat([pinData.long, pinData.lat])
-            marker1.addTo(map.current)
-    }, [pinData])
-
-
+    // useEffect(() => {
+    //     marker1.setLngLat([pinData.long, pinData.lat])
+    //     marker1.addTo(map.current)
+    // }, [pinData])
 
     return (
         <div className = "mapPage">
