@@ -17,7 +17,6 @@ export default function Map() {
         long: 0.0,
         lat: 0.0,
     })
-    const marker1 = new mapboxgl.Marker()
       
     const handleSubmit = (event) =>{
         event.preventDefault();
@@ -32,16 +31,7 @@ export default function Map() {
                 })
             })
         .catch(e => console.log(e))
-        }
-    const [coord, setCoord] = useState({
-        long: -86.921195,
-        lat: 40.423705
-    })
-
-    useEffect(() => {
-        pinData.long = coord.long;
-        pinData.lat = coord.lat;
-      }, [coord])
+    }
 
     useEffect(() => {
         if (map.current) return; // initialize map only once
@@ -76,18 +66,27 @@ export default function Map() {
     permanent addition the map is occuring correctly, just not visually correct
     */
 
-    useEffect(() => {
-        map.current.on('click', (clicky) => {
-            setCoord({...coord, long:clicky.lngLat.lng, lat:clicky.lngLat.lat})
-            marker1.setLngLat([pinData.long, pinData.lat])
-            marker1.addTo(map.current)
-        });
-    });
+    const marker = new mapboxgl.Marker();
+
+    function add_marker (event) {
+        const coordinates = event.lngLat;
+        console.log('Lng:', coordinates.lng, 'Lat:', coordinates.lat);
+        marker.setLngLat(coordinates).addTo(map.current);
+        setPinData({...pinData, long:event.lngLat.lng, lat:event.lngLat.lat})
+    }
 
     // useEffect(() => {
-    //     marker1.setLngLat([pinData.long, pinData.lat])
-    //     marker1.addTo(map.current)
-    // }, [pinData])
+    //     map.current.on('click', (e) => {
+    //         setPinData({...pinData, long:e.lngLat.lng, lat:e.lngLat.lat})
+    //         marker1.setLngLat([pinData.long, pinData.lat])
+    //         marker1.addTo(map.current)
+    //     });
+    // });
+
+    useEffect(() => {
+        map.current.on('click', add_marker);
+    })
+    
 
     return (
         <div className = "mapPage">
