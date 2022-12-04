@@ -53,7 +53,6 @@ export default function Auth() {
                     <>
                       <input placeholder = "Your school email" id = "email" name = "email" type ="email" onChange = {(e) => setUserData({...userData, email: e.target.value})}/>
                       <input placeholder = "Your school" id = "school" name = "school" type ="school" onChange = {(e) => setUserData({...userData, school: e.target.value})}/>
-                      <input placeholder = "Are you an organizer for your school?" id = "isOrganizer" name = "isOrganizer" type ="isOrganizer" onChange = {(e) => setUserData({...userData, isOrganizer: e.target.value})}/>
                     </>
                   )
                 }

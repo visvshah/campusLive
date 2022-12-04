@@ -17,6 +17,7 @@ export default function Map() {
         long: 0.0,
         lat: 0.0,
     })
+      
     const handleSubmit = (event) =>{
         event.preventDefault();
         fetch("http://localhost:4000/api/markers/", { method: "POST", body: JSON.stringify(pinData), mode: 'no-cors', headers: {'Content-Type': 'application/json','Accept': 'application/json'}, contentType: "applicationjson"})
@@ -30,15 +31,8 @@ export default function Map() {
                 })
             })
         .catch(e => console.log(e))
-        }
-    const [coord, setCoord] = useState({
-        long: -86.921195,
-        lat: 40.423705
-    })
-    useEffect(() => {
-        pinData.long = coord.long;
-        pinData.lat = coord.lat;
-      }, [coord])
+    }
+
     useEffect(() => {
         if (map.current) return; // initialize map only once
             map.current = new mapboxgl.Map({
@@ -51,6 +45,7 @@ export default function Map() {
             });
         }
     );
+
     useEffect(() => {
         if (!map.current) return; // wait for map to initialize
             map.current.on('move', () => {
@@ -59,12 +54,39 @@ export default function Map() {
             setZoom(map.current.getZoom().toFixed(12));
         });
     });
+    
+    /* order: 
+    1. click on map (marker isn't updated)
+    2. type character in one of the text boxes
+    3. click again on map, the initial click location is marked
+    
+    * issues: the visualization of the marker on click is not updating 
+    the marker is showing the last click on the map. 
+    
+    permanent addition the map is occuring correctly, just not visually correct
+    */
+
+    const marker = new mapboxgl.Marker();
+
+    function add_marker (event) {
+        const coordinates = event.lngLat;
+        console.log('Lng:', coordinates.lng, 'Lat:', coordinates.lat);
+        marker.setLngLat(coordinates).addTo(map.current);
+        setPinData({...pinData, long:event.lngLat.lng, lat:event.lngLat.lat})
+    }
+
+    // useEffect(() => {
+    //     map.current.on('click', (e) => {
+    //         setPinData({...pinData, long:e.lngLat.lng, lat:e.lngLat.lat})
+    //         marker1.setLngLat([pinData.long, pinData.lat])
+    //         marker1.addTo(map.current)
+    //     });
+    // });
 
     useEffect(() => {
-        map.current.on('click', (clicky) => {
-            setCoord({...coord, long:clicky.lngLat.lng, lat:clicky.lngLat.lat})
-        });
-    });
+        map.current.on('click', add_marker);
+    })
+    
 
     return (
         <div className = "mapPage">
@@ -79,9 +101,9 @@ export default function Map() {
                 </form>
             </div>
             <div className="right">
-                <div ref={mapContainer} className="map-container" />
-            </div>
-            
+                <div ref={mapContainer} className="map-container">
+                </div>
+            </div>        
         </div>
     );
 }

@@ -1,12 +1,13 @@
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import landingpage from './components/Landing/Landing.jsx';
 import Map from './components/Map/Map';
 import Auth from './components/Auth/Auth';
 import NavBar from './components/Navbar/Navbar'
 import Landing from './components/Landing/Landing.jsx';
-//import {registerUser, loginUser, getMe} from '../../backend/controllers/userController.js'
+import 'mapbox-gl/dist/mapbox-gl.css';
+import './index.css';
 
-function App() {
+
+export default function App() {
   return (
     <Router>
       <div className='container'>
@@ -19,6 +20,3 @@ function App() {
     </Router>
   )
 }
-
-export default App;
-//<Auth regUser = {registerUser}/>
