@@ -58,10 +58,11 @@ export default function Auth() {
         <div className="authPage">
             <h1 className = "header" >{logIn ? "Log In" : "Sign Up"}</h1>
             <form autoComplete = "off" validate = "true" className = "form" onSubmit = {handleSubmit}> 
-                <input placeholder = "Your full name" id = "fullName" name = "fullName" type ="fullName" onChange = {(e) => setUserData({...userData, fullName: e.target.value})}/>
+                <input placeholder = "Your school email" id = "email" name = "email" type ="email" onChange = {(e) => setUserData({...userData, email: e.target.value})}/>
+              
                 { !logIn && (
                     <>
-                      <input placeholder = "Your school email" id = "email" name = "email" type ="email" onChange = {(e) => setUserData({...userData, email: e.target.value})}/>
+                      <input placeholder = "Your full name" id = "fullName" name = "fullName" type ="fullName" onChange = {(e) => setUserData({...userData, fullName: e.target.value})}/>
                       <input placeholder = "Your school" id = "school" name = "school" type ="school" onChange = {(e) => setUserData({...userData, school: e.target.value})}/>
                     </>
                   )
