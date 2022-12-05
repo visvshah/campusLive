@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import mongoose from "mongoose";
 
 const markerSchema = mongoose.Schema({
     long: {
@@ -23,4 +23,5 @@ const markerSchema = mongoose.Schema({
 }
 )
 
-module.exports = mongoose.model('Marker', markerSchema)
+const Marker =  mongoose.model('Marker', markerSchema)
+export default Marker;

@@ -17,10 +17,9 @@ export default function Map() {
         long: 0.0,
         lat: 0.0,
     })
-      
     const handleSubmit = (event) =>{
         event.preventDefault();
-        fetch("http://localhost:4000/api/markers/", { method: "POST", body: JSON.stringify(pinData), mode: 'no-cors', headers: {'Content-Type': 'application/json','Accept': 'application/json'}, contentType: "applicationjson"})
+        fetch("http://localhost:4001/api/markers/", { method: "POST", body: JSON.stringify(pinData), mode: 'cors', headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},contentType: "application/json"})
             .then(res => {
                 console.log(pinData)
                 setPinData({
@@ -30,7 +29,9 @@ export default function Map() {
                     lat: 0.0,
                 })
             })
-        .catch(e => console.log(e))
+        .catch(e => {
+            console.log(e)
+        })
     }
 
     useEffect(() => {

@@ -1,18 +1,18 @@
-const asyncHandler = require('express-async-handler')
-const Marker = require('../models/markerModel')
-const User = require('../models/userModel')
-
-const getMarkers = asyncHandler(async (req, res) => {
+import asyncHandler from "express-async-handler";
+import Marker from "../models/markerModel.js";
+import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import express from "express";
+export const getMarkers = asyncHandler(async (req, res) => {
     const markers = await Marker.find({ user: req.user.id })
 
     res.status(200).json(markers)
 })
 
 
-const setMarkers = asyncHandler(async (req, res) => {
-    console.print(req.body)
+export const setMarkers = asyncHandler(async (req, res) => {
     
-
     try {
         const marker = await Marker.create({
             event: req.body.title,
@@ -23,16 +23,15 @@ const setMarkers = asyncHandler(async (req, res) => {
 
         console.log(marker);
 
-        await marker.save();
-        response.status(201).json(marker);
+        res.status(201).json(marker);
     } catch (error) {
         console.log(error);
-        response.statis(409).json({message: error})
+        res.statis(409).json({message: error})
     }
 })
 
 
-const updateMarker = asyncHandler(async (req, res) => {
+export const updateMarker = asyncHandler(async (req, res) => {
     const marker = await Marker.findById(req.params.id)
     if (!marker) {
         res.status(400)
@@ -60,7 +59,7 @@ const updateMarker = asyncHandler(async (req, res) => {
     res.status(200).json(updatedMarker)
 })
 
-const deleteMarker = asyncHandler(async (req, res) => {
+export const deleteMarker = asyncHandler(async (req, res) => {
     const marker = await Marker.findById(req.params.id)
     
     const user = await User.findById(req.user.id)
@@ -86,10 +85,3 @@ const deleteMarker = asyncHandler(async (req, res) => {
 
     res.status(200).json({ id: req.params.id})
 })
-
-module.exports = {
-    getMarkers,
-    setMarkers,
-    updateMarker,
-    deleteMarker
-}
