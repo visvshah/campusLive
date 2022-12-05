@@ -1,20 +1,23 @@
 
-const jwt = require('jsonwebtoken')
-const bcrypt = require('bcryptjs')
-const asyncHandler = require('express-async-handler')
-const User = require('../models/userModel')
+import asyncHandler from "express-async-handler";
+import User from "../models/userModel.js";
+import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import express from "express";
 
 // @desc    Register new user
 // @route   POST /api/users
 // @access  Public
-const registerUser = asyncHandler(async (req, res) => {
-    const { name, email, password, school, isOrganizer } = req.body
-
+export const registerUser = asyncHandler(async (req, res) => {
+    const { fullName, email, password, school, isOrganizer } = req.body
+    console.log(req.body);
+    /** 
     if(!name.length > 0 || !email.length > 0 || !password.length > 0 || !school.length > 0) {
         res.status(400)
         throw new Error('Please add all fields')
     }
-
+    */      
     // Check if user exists
     const userExists = await User.findOne({email})
 
@@ -29,17 +32,17 @@ const registerUser = asyncHandler(async (req, res) => {
 
     // Create user
     const user = await User.create({
-        name,
+        fullName,
         email,
         school,
         isOrganizer,
         password: hashedPassword
     })
-
+    console.log(user);
     if(user) {
         res.status(201).json({
             _id: user.id,
-            name: user.name,
+            fullName: user.fullName,
             email: user.email,
             school: user.school,
             isOrganizer: user.isOrganizer,
@@ -49,18 +52,16 @@ const registerUser = asyncHandler(async (req, res) => {
         res.status(400)
         throw new Error('Invalid user data')
     }
-
-    res.json({message: 'Register User'})
 })
 
 // @desc    Authenticate a user
 // @route   POST /api/users/login
 // @access  Public
-const loginUser = asyncHandler(async (req, res) => {
+export const loginUser = asyncHandler(async (req, res) => {
     const {email, password} = req.body
-
+    console.log(req.body);
     const user = await User.findOne({email})
-
+    
     if(user && (await bcrypt.compare(password, user.password))) {
         res.json({
             _id: user.id,
@@ -77,7 +78,7 @@ const loginUser = asyncHandler(async (req, res) => {
 // @desc    Get user data
 // @route   GET /api/users/me
 // @access  Private
-const getMe = asyncHandler(async (req, res) => {
+export const getMe = asyncHandler(async (req, res) => {
     const {_id, name, email } = await User.findById(req.user.id)
 
     res.status(200).json({
@@ -95,10 +96,4 @@ const generateToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET, {
         expiresIn: '30d',
     })
-}
-
-module.exports = {
-    registerUser,
-    loginUser,
-    getMe
 }

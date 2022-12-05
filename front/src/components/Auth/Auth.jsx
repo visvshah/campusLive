@@ -1,7 +1,10 @@
 import React, {useState} from "react";
 import "./auth.css"
+import {useNavigate} from "react-router-dom";
+
 export default function Auth() {
   const [logIn, changeLogIn] = useState(true);
+  const navigate = useNavigate();
   const handleSubmit = (event) =>{
     event.preventDefault();
     if(logIn){
@@ -12,24 +15,31 @@ export default function Auth() {
     }
   }
   const sendLogIn = (e) =>{
-    e.preventDefault();
-        fetch("http://localhost:4000/api/users/login", { method: "POST", body: userData, mode: 'cors', contentType: "applicationjson"})
+        fetch("http://localhost:4001/api/users/login", { method: "POST", body: JSON.stringify(userData), mode: 'cors', headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},contentType: "application/json"})
             .then(res => {
                 return res.json()
             })
             .then(data => {
-              localStorage.setItem("token", data.token)
+                localStorage.setItem("profile", JSON.stringify(data));
+                navigate('/');
             })
-        .catch(e => console.log(e))
+        .catch(e => {
+            console.log(e)
+        })
   }
 
   const sendSignUp = (e) =>{
-    e.preventDefault();
-        fetch("http://localhost:4000/api/users/", { method: "POST", body: userData, mode: 'no-cors', contentType: "applicationjson"})
+        fetch("http://localhost:4001/api/users/", { method: "POST", body: JSON.stringify(userData), mode: 'cors', headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},contentType: "application/json"})
             .then(res => {
-                
+                return res.json();
             })
-        .catch(e => console.log(e))
+            .then(data => {
+                localStorage.setItem("profile", JSON.stringify(data));
+                navigate('/');
+            })
+        .catch(e => {
+            console.log(e)
+        })
   }
 
   const changeMode = () =>{
@@ -48,10 +58,11 @@ export default function Auth() {
         <div className="authPage">
             <h1 className = "header" >{logIn ? "Log In" : "Sign Up"}</h1>
             <form autoComplete = "off" validate = "true" className = "form" onSubmit = {handleSubmit}> 
-                <input placeholder = "Your full name" id = "fullName" name = "fullName" type ="fullName" onChange = {(e) => setUserData({...userData, fullName: e.target.value})}/>
+                <input placeholder = "Your school email" id = "email" name = "email" type ="email" onChange = {(e) => setUserData({...userData, email: e.target.value})}/>
+              
                 { !logIn && (
                     <>
-                      <input placeholder = "Your school email" id = "email" name = "email" type ="email" onChange = {(e) => setUserData({...userData, email: e.target.value})}/>
+                      <input placeholder = "Your full name" id = "fullName" name = "fullName" type ="fullName" onChange = {(e) => setUserData({...userData, fullName: e.target.value})}/>
                       <input placeholder = "Your school" id = "school" name = "school" type ="school" onChange = {(e) => setUserData({...userData, school: e.target.value})}/>
                     </>
                   )

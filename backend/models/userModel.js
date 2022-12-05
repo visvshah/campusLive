@@ -1,8 +1,7 @@
-const mongoose = require('mongoose')
-const { boolean } = require('webidl-conversions')
+import mongoose from "mongoose";
 
 const userSchema = mongoose.Schema({
-    name: {
+    fullName: {
         type: String,
         required: [true, 'Please add a name']
     },
@@ -30,4 +29,5 @@ const userSchema = mongoose.Schema({
     timestamps: true
 })
 
-module.exports = mongoose.model('User', userSchema)
+const User =  mongoose.model('User', userSchema);
+export default User;

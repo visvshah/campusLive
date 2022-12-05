@@ -1,8 +1,9 @@
-const express = require('express')
+import express from "express";
+import { getMarkers, setMarkers} from '../controllers/markerControllers.js'
 const router = express.Router()
-const { getMarkers, setMarkers, updateMarkers, deleteMarkers } = require('../controllers/markerControllers')
+
 
 router.post("/", setMarkers)
 router.get("/", getMarkers)
 
-module.exports = router
+export default router;
