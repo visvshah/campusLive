@@ -13,23 +13,30 @@ export default function Auth() {
   }
   const sendLogIn = (e) =>{
     e.preventDefault();
-        fetch("http://localhost:4000/api/users/login", { method: "POST", body: userData, mode: 'cors', contentType: "applicationjson"})
+        fetch("http://localhost:4001/api/users/login", { method: "POST", body: JSON.stringify(userData), mode: 'cors', headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},contentType: "application/json"})
             .then(res => {
                 return res.json()
             })
             .then(data => {
-              localStorage.setItem("token", data.token)
+                localStorage.setItem("profile", JSON.stringify(data));
             })
-        .catch(e => console.log(e))
+        .catch(e => {
+            console.log(e)
+        })
   }
 
   const sendSignUp = (e) =>{
     e.preventDefault();
-        fetch("http://localhost:4000/api/users/", { method: "POST", body: userData, mode: 'no-cors', contentType: "applicationjson"})
+        fetch("http://localhost:4001/api/users/", { method: "POST", body: JSON.stringify(userData), mode: 'cors', headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},contentType: "application/json"})
             .then(res => {
-                
+                return res.json();
             })
-        .catch(e => console.log(e))
+            .then(data => {
+                localStorage.setItem("profile", JSON.stringify(data));
+            })
+        .catch(e => {
+            console.log(e)
+        })
   }
 
   const changeMode = () =>{
