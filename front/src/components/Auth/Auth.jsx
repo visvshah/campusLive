@@ -15,7 +15,6 @@ export default function Auth() {
     }
   }
   const sendLogIn = (e) =>{
-    e.preventDefault();
         fetch("http://localhost:4001/api/users/login", { method: "POST", body: JSON.stringify(userData), mode: 'cors', headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},contentType: "application/json"})
             .then(res => {
                 return res.json()
@@ -30,7 +29,6 @@ export default function Auth() {
   }
 
   const sendSignUp = (e) =>{
-    e.preventDefault();
         fetch("http://localhost:4001/api/users/", { method: "POST", body: JSON.stringify(userData), mode: 'cors', headers: {'Accept': 'application/json', 'Content-Type': 'application/json'},contentType: "application/json"})
             .then(res => {
                 return res.json();
