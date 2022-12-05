@@ -1,7 +1,10 @@
 import React, {useState} from "react";
 import "./auth.css"
+import {useNavigate} from "react-router-dom";
+
 export default function Auth() {
   const [logIn, changeLogIn] = useState(true);
+  const navigate = useNavigate();
   const handleSubmit = (event) =>{
     event.preventDefault();
     if(logIn){
@@ -19,6 +22,7 @@ export default function Auth() {
             })
             .then(data => {
                 localStorage.setItem("profile", JSON.stringify(data));
+                navigate('/');
             })
         .catch(e => {
             console.log(e)
@@ -33,6 +37,7 @@ export default function Auth() {
             })
             .then(data => {
                 localStorage.setItem("profile", JSON.stringify(data));
+                navigate('/');
             })
         .catch(e => {
             console.log(e)
